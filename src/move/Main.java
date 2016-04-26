@@ -1,5 +1,6 @@
-package mygame;
+package move;
 
+import appstates.GameplayAppState;
 import com.jme3.app.SimpleApplication;
 import com.jme3.material.Material;
 import com.jme3.math.ColorRGBA;
@@ -21,7 +22,9 @@ public class Main extends SimpleApplication {
 
     @Override
     public void simpleInitApp() {
-        
+        // Initiates the main game appstate
+        GameplayAppState gameplayAppState = new GameplayAppState();
+        stateManager.attach(gameplayAppState);
     }
 
     @Override
