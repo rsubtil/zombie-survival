@@ -1,4 +1,4 @@
-package move;
+package main;
 
 import appstates.GameplayAppState;
 import com.jme3.app.SimpleApplication;
