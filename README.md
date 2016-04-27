@@ -9,6 +9,7 @@ Currently the game is avaliable in these formats:
 - Linux x86
 - Linux x64
 - Mac OSX
+
 Note that these builds havent benn tested yet.
 
 ##### Dependencies
