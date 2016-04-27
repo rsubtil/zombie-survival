@@ -17,6 +17,8 @@ Note that these builds havent benn tested yet.
 
 ### Contributors
  - **Ricardo Subtil** - General Developer
+ - **Luís Ferreira** - Project configuration
+ - **Francisco Jordão** - Graphics Designer
 
 Want to contribute? Great! Make a pull request on my github repository.
 
