@@ -10,24 +10,4 @@
         <maven.compiler.source>1.7</maven.compiler.source>
         <maven.compiler.target>1.7</maven.compiler.target>
     </properties>
-    <!--
-    <repositories>
-        <!-- Bukkit
-        <repository>
-          <id>bukkit-repo</id>
-          <url>http://repo.bukkit.org/content/groups/public/</url>
-        </repository>
-        
-    </repositories>
-    <dependencies>
-        
-        <!-- Bukkit
-        <dependency>
-            <groupId>org.bukkit</groupId>
-            <artifactId>bukkit</artifactId>
-            <version>1.5.2-R1.0</version>
-        </dependency>
-        
-    </dependencies>
-    -->
 </project>
