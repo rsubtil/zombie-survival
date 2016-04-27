@@ -12,7 +12,7 @@ Currently the game is avaliable in these formats:
 
 Note that these builds havent benn tested yet.
 
-##### Dependencies
+#### Dependencies
 "Zombie Survival" uses jMonkeyEngine as it main engine. All dependencies are located in the "libs" folder. Just add them to the project's librarys.
 
 ### Contributors
