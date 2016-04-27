@@ -3,16 +3,16 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>ev1lbl0w.zombie.survival</groupId>
     <artifactId>ZombieSurvival</artifactId>
-    <version>BETA</version>
+    <version>ALPHA</version>
     <packaging>jar</packaging>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.source>1.7</maven.compiler.source>
         <maven.compiler.target>1.7</maven.compiler.target>
     </properties>
+    <!--
     <repositories>
-        
-        <!-- Bukkit -->
+        <!-- Bukkit
         <repository>
           <id>bukkit-repo</id>
           <url>http://repo.bukkit.org/content/groups/public/</url>
@@ -21,7 +21,7 @@
     </repositories>
     <dependencies>
         
-        <!-- Bukkit -->
+        <!-- Bukkit
         <dependency>
             <groupId>org.bukkit</groupId>
             <artifactId>bukkit</artifactId>
@@ -29,4 +29,5 @@
         </dependency>
         
     </dependencies>
+    -->
 </project>
