@@ -1,4 +1,4 @@
-# Zombie Survival [![Build Status](https://travis-ci.org/Ev1lbl0w/zombie-survival.svg?branch=master)](https://travis-ci.org/Ev1lbl0w/zombie-survival) ![License](https://img.shields.io/badge/License-Apache_v2.0-lightgrey.svg)
+# Zombie Survival [![Build Status](https://travis-ci.org/Ev1lbl0w/zombie-survival.svg?branch=master)](https://travis-ci.org/Ev1lbl0w/zombie-survival) [![Appveyor Build Status](https://ci.appveyor.com/api/projects/status/github/Ev1lbl0w/zombie-survival?branch=master&svg=true)](https://ci.appveyor.com/project/Ev1lbl0w/zombie-survival) ![License](https://img.shields.io/badge/License-Apache_v2.0-lightgrey.svg)
 An open-source zombie survival game.
 
 ### Build
