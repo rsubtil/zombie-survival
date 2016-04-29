@@ -1,0 +1,11 @@
+Material My Material : Common/MatDefs/Light/Lighting.j3md {
+     MaterialParameters {
+        DiffuseMap : Textures/gauze.png
+     }
+    AdditionalRenderState {
+      FaceCull Off
+      DepthWrite On
+      Blend Alpha
+      Wireframe Off
+    }
+}
