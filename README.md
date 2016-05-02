@@ -16,9 +16,10 @@ Note that these builds havent been tested yet.
 "Zombie Survival" uses jMonkeyEngine as it main engine. All dependencies are located in the "libs" folder. Just add them to the project's libraries.
 
 ### Contributors
- - **Ricardo Subtil** - General Developer
- - **Luís Ferreira** - Project configuration
+ - **Ricardo Subtil** - General Developer and Graphics Designer
+ - **Luís Ferreira** - Project configuration and Graphics Designer
  - **Francisco Jordão** - Graphics Designer
+ - **Filipe Laíns** - Gerneral Contributor
 
 Want to contribute? Great! Make a pull request on my github repository.
 
