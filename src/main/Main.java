@@ -1,5 +1,6 @@
 package main;
 
+import appstates.EntityDataState;
 import appstates.GameplayAppState;
 import com.jme3.app.SimpleApplication;
 import com.jme3.renderer.RenderManager;
@@ -17,9 +18,8 @@ public class Main extends SimpleApplication {
 
     @Override
     public void simpleInitApp() {
-        // Initiates the main game appstate
-        GameplayAppState gameplayAppState = new GameplayAppState();
-        stateManager.attach(gameplayAppState);
+        // Initiates the appstates
+        stateManager.attachAll(new GameplayAppState(), new EntityDataState());
     }
 
     @Override
