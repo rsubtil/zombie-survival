@@ -4,7 +4,7 @@ import com.simsilica.es.EntityComponent;
 
 public class Model implements EntityComponent {
     
-    public String name;
+    private String name;
     
     public static final String I_Gauze = "I_Gauze";
     public static final String I_HealthKit = "I_HealthKit";
