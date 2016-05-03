@@ -41,7 +41,9 @@ public class VisualAppState extends AbstractAppState {
     @Override
     public void update(float tpf) {
         if(entities.applyChanges()) {
-            
+            removeModels(entities.getRemovedEntities());
+            addModels(entities.getAddedEntities());
+            updateModels(entities.getChangedEntities());
         }
     }
     

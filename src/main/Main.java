@@ -2,13 +2,10 @@ package main;
 
 import appstates.EntityDataState;
 import appstates.GameplayAppState;
+import appstates.VisualAppState;
 import com.jme3.app.SimpleApplication;
 import com.jme3.renderer.RenderManager;
 
-/**
- * test
- * @author normenhansen
- */
 public class Main extends SimpleApplication {
 
     public static void main(String[] args) {
@@ -18,8 +15,10 @@ public class Main extends SimpleApplication {
 
     @Override
     public void simpleInitApp() {
-        // Initiates the appstates
-        stateManager.attachAll(new GameplayAppState(), new EntityDataState());
+        // Initializes the appstates
+        stateManager.attachAll(new GameplayAppState(), 
+                               new EntityDataState(),
+                               new VisualAppState());
     }
 
     @Override
