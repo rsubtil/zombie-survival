@@ -6,7 +6,7 @@ import com.simsilica.es.base.DefaultEntityData;
 
 public class EntityDataState extends AbstractAppState {
     
-    public EntityData ed;
+    private EntityData ed;
     
     public EntityDataState() {
         this(new DefaultEntityData());
