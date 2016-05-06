@@ -33,7 +33,7 @@ public class GameplayAppState extends AbstractAppState{
         
         // Loads the terrain
         Spatial terrain = assetManager.loadModel("Scenes/Terrain/terrain.j3o");
-        rootNode.attachChild(terrain);
+        //rootNode.attachChild(terrain);
         
         // Sets the camera's position and velocity
         cam.setLocation(new Vector3f(0, 100, 0));

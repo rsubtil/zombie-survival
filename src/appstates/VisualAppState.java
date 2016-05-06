@@ -4,6 +4,7 @@ import com.jme3.app.Application;
 import com.jme3.app.SimpleApplication;
 import com.jme3.app.state.AbstractAppState;
 import com.jme3.app.state.AppStateManager;
+import com.jme3.math.Vector3f;
 import com.jme3.scene.Spatial;
 import com.simsilica.es.Entity;
 import com.simsilica.es.EntityData;
@@ -31,11 +32,18 @@ public class VisualAppState extends AbstractAppState {
     public void initialize(AppStateManager stateManager, Application app) {
         super.initialize(stateManager, app);
         
+        
         this.app = (SimpleApplication)app;
         this.ed = this.app.getStateManager().getState(EntityDataState.class).getEntityData();
         this.entities = this.ed.getEntities(Transform.class, Model.class);
         
         this.modelLoader = new ModelLoader(this.app.getAssetManager());
+        
+        EntityId e = ed.createEntity();
+        ed.setComponents(e,
+                        new Transform(new Vector3f(0, 100, 0)),
+                        new Model("P_Tree1"));
+        
     }
     
     @Override
@@ -49,7 +57,7 @@ public class VisualAppState extends AbstractAppState {
     
     private void removeModels(Set<Entity> entities) {
         for(Entity e : entities) {
-            Spatial s = models.remove(e);
+            Spatial s = models.remove(e.getId());
             s.removeFromParent();
         }
     }
