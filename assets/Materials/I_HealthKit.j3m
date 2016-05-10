@@ -1,0 +1,9 @@
+Material I_HealthKit : Common/MatDefs/Light/Lighting.j3md {
+     MaterialParameters {
+        DiffuseMap : Flip Textures/healthKit.png
+     }
+    AdditionalRenderState {
+      FaceCull Back
+      DepthWrite On
+    }
+}

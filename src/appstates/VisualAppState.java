@@ -41,8 +41,8 @@ public class VisualAppState extends AbstractAppState {
         
         EntityId e = ed.createEntity();
         ed.setComponents(e,
-                        new Transform(new Vector3f(0, 100, 0)),
-                        new Model("P_Tree1"));
+                        new Transform(),
+                        new Model(Model.P_TallGrass1));
         
     }
     

@@ -1,4 +1,4 @@
-Material My Material : Common/MatDefs/Light/Lighting.j3md {
+Material I_Gauze : Common/MatDefs/Light/Lighting.j3md {
      MaterialParameters {
         DiffuseMap : Textures/gauze.png
      }

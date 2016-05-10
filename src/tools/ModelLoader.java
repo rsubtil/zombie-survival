@@ -1,6 +1,7 @@
 package tools;
 
 import com.jme3.asset.AssetManager;
+import com.jme3.renderer.queue.RenderQueue;
 import com.jme3.scene.Geometry;
 import com.jme3.scene.Node;
 import com.jme3.scene.Spatial;
@@ -35,6 +36,18 @@ public class ModelLoader {
         } else if(spat instanceof Geometry) {
             Geometry g = (Geometry)spat;
             g.getMaterial().getTextureParam("DiffuseMap").getTextureValue().setMagFilter(Texture.MagFilter.Nearest);
+        }
+    }
+    
+    public static void setAlpha(Spatial spat) {
+        if(spat instanceof Node) {
+            Node n = (Node)spat;
+            for(Spatial s : n.getChildren()) {
+                setAlpha(spat);
+            }
+        } else if(spat instanceof Geometry) {
+            Geometry g = (Geometry)spat;
+            g.setQueueBucket(RenderQueue.Bucket.Transparent);
         }
     }
 }

@@ -1,0 +1,11 @@
+Material P_TallGrass1 : Common/MatDefs/Light/Lighting.j3md {
+     MaterialParameters {
+        DiffuseMap : Flip Textures/P_TallGrass1.png
+     }
+    AdditionalRenderState {
+      FaceCull Back
+      DepthWrite On
+      Blend Alpha
+      ColorWrite On
+    }
+}
