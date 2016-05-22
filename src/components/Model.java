@@ -1,23 +1,17 @@
 package components;
 
 import com.simsilica.es.EntityComponent;
+import tools.ModelLoader;
 
 public class Model implements EntityComponent {
     
-    private String name;
+    private ModelLoader.Models model;
     
-    public static final String I_Gauze = "I_Gauze";
-    public static final String I_HealthKit = "I_HealthKit";
-    public static final String I_Pills = "I_Pills";
-    
-    public static final String P_Tree1 = "P_Tree1";
-    public static final String P_TallGrass1 = "P_TallGrass1";
-    
-    public Model(String name) {
-        this.name = name;
+    public Model(ModelLoader.Models model) {
+        this.model = model;
     }
     
-    public String getName() {
-        return name;
+    public ModelLoader.Models getModel() {
+        return model;
     }
 }

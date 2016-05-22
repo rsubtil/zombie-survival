@@ -4,12 +4,12 @@ import com.jme3.app.Application;
 import com.jme3.app.SimpleApplication;
 import com.jme3.app.state.AbstractAppState;
 import com.jme3.app.state.AppStateManager;
-import com.jme3.math.Vector3f;
 import com.jme3.scene.Spatial;
 import com.simsilica.es.Entity;
 import com.simsilica.es.EntityData;
 import com.simsilica.es.EntityId;
 import com.simsilica.es.EntitySet;
+import components.Billboard;
 import components.Model;
 import components.Transform;
 import java.util.HashMap;
@@ -32,18 +32,11 @@ public class VisualAppState extends AbstractAppState {
     public void initialize(AppStateManager stateManager, Application app) {
         super.initialize(stateManager, app);
         
-        
         this.app = (SimpleApplication)app;
         this.ed = this.app.getStateManager().getState(EntityDataState.class).getEntityData();
         this.entities = this.ed.getEntities(Transform.class, Model.class);
         
-        this.modelLoader = new ModelLoader(this.app.getAssetManager());
-        
-        EntityId e = ed.createEntity();
-        ed.setComponents(e,
-                        new Transform(),
-                        new Model(Model.P_TallGrass1));
-        
+        this.modelLoader = new ModelLoader(this.app.getAssetManager());      
     }
     
     @Override
@@ -61,7 +54,7 @@ public class VisualAppState extends AbstractAppState {
             s.removeFromParent();
         }
     }
-    
+
     private void addModels(Set<Entity> entities) {
         for(Entity e : entities) {
             Spatial s = createVisual(e);
@@ -87,7 +80,7 @@ public class VisualAppState extends AbstractAppState {
     
     private Spatial createVisual(Entity e) {
         Model m = e.get(Model.class);
-        return modelLoader.load(m.getName());
+        return modelLoader.load(m.getModel());
     }
     
     @Override

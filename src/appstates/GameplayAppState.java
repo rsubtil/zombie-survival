@@ -10,7 +10,6 @@ import com.jme3.light.AmbientLight;
 import com.jme3.light.DirectionalLight;
 import com.jme3.math.ColorRGBA;
 import com.jme3.math.FastMath;
-import com.jme3.math.Vector2f;
 import com.jme3.math.Vector3f;
 import com.jme3.renderer.Camera;
 import com.jme3.scene.Node;
@@ -18,8 +17,10 @@ import com.jme3.scene.Spatial;
 import com.jme3.terrain.Terrain;
 import com.simsilica.es.EntityData;
 import com.simsilica.es.EntityId;
+import components.Billboard;
 import components.Model;
 import components.Transform;
+import tools.ModelLoader.Models;
 
 public class GameplayAppState extends AbstractAppState{
     
@@ -44,7 +45,7 @@ public class GameplayAppState extends AbstractAppState{
         
         // Sets the camera's position and velocity
         //cam.setLocation(new Vector3f(0, 100, 0));
-        flyCam.setMoveSpeed(32);
+        flyCam.setMoveSpeed(15);
         
         // Adds lights
         DirectionalLight sun = new DirectionalLight();
@@ -60,6 +61,7 @@ public class GameplayAppState extends AbstractAppState{
         // Gets the Terrain object
         Node temp = (Node)terrain;
         Terrain ground = (Terrain)temp.getChild("Terrain");
+        temp = null;
         
         // Gets the entityData
         EntityData ed = stateManager.getState(EntityDataState.class).getEntityData();
@@ -72,7 +74,19 @@ public class GameplayAppState extends AbstractAppState{
             EntityId id = ed.createEntity();
             ed.setComponents(id,
                         new Transform(new Vector3f(x, 0, z)),
-                        new Model(Model.P_TallGrass1));
+                        new Model(Models.P_Tree1));
+        }
+        
+        for(int i = 0; i < 1000; i++) {
+            int x = FastMath.nextRandomInt(-64, 64);
+            int z = FastMath.nextRandomInt(-64, 64);
+            //float y = ground.getHeight(new Vector2f(x, z));
+            
+            EntityId id = ed.createEntity();
+            ed.setComponents(id,
+                        new Transform(new Vector3f(x, 0, z)),
+                        new Model(Models.P_TallGrass),
+                        new Billboard());
         }
         
         // Continues to initialize
