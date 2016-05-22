@@ -1,12 +1,13 @@
 package main;
 
-import appstates.BillboardAppState;
 import appstates.EntityDataState;
 import appstates.GameplayAppState;
 import appstates.VisualAppState;
 import com.jme3.app.SimpleApplication;
 import com.jme3.math.ColorRGBA;
+import com.jme3.math.Vector3f;
 import com.jme3.renderer.RenderManager;
+import com.jme3.scene.Spatial;
 
 public class Main extends SimpleApplication {
 
@@ -24,8 +25,7 @@ public class Main extends SimpleApplication {
                                //        and is causing weird behaviour. Don't uncomment
                                /*new BillboardAppState()*/
                                new EntityDataState());
-        
-        // DEBUG: Helps ti find transparency problems
+       
         viewPort.setBackgroundColor(ColorRGBA.Cyan);
     }
     
@@ -33,7 +33,7 @@ public class Main extends SimpleApplication {
     public void simpleUpdate(float tpf) {
         /*for(Spatial s : rootNode.getChildren()) {
             s.lookAt(cam.getLocation(), Vector3f.UNIT_Y);
-            s.setLocalRotation(s.getLocalRotation());
+            
         }*/
     }
 

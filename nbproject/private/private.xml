@@ -3,9 +3,13 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+            <file>file:/C:/Users/Ricardo/Desktop/Projetos%20JME/ZombieSurvival/src/appstates/BillboardAppState.java</file>
+            <file>file:/C:/Users/Ricardo/Desktop/Projetos%20JME/ZombieSurvival/src/components/Billboard.java</file>
             <file>file:/C:/Users/Ricardo/Desktop/Projetos%20JME/ZombieSurvival/src/main/Main.java</file>
-            <file>file:/C:/Users/Ricardo/Desktop/Projetos%20JME/ZombieSurvival/src/appstates/GameplayAppState.java</file>
             <file>file:/C:/Users/Ricardo/Desktop/Projetos%20JME/ZombieSurvival/src/appstates/VisualAppState.java</file>
+            <file>file:/C:/Users/Ricardo/Desktop/Projetos%20JME/ZombieSurvival/src/appstates/GameplayAppState.java</file>
+            <file>file:/C:/Users/Ricardo/Desktop/Projetos%20JME/ZombieSurvival/src/tools/ModelLoader.java</file>
+            <file>file:/C:/Users/Ricardo/Desktop/Projetos%20JME/ZombieSurvival/src/components/Model.java</file>
         </group>
     </open-files>
 </project-private>

@@ -10,11 +10,13 @@ import com.jme3.light.AmbientLight;
 import com.jme3.light.DirectionalLight;
 import com.jme3.math.ColorRGBA;
 import com.jme3.math.FastMath;
+import com.jme3.math.Vector2f;
 import com.jme3.math.Vector3f;
 import com.jme3.renderer.Camera;
 import com.jme3.scene.Node;
 import com.jme3.scene.Spatial;
 import com.jme3.terrain.Terrain;
+import com.jme3.terrain.geomipmap.TerrainLodControl;
 import com.simsilica.es.EntityData;
 import com.simsilica.es.EntityId;
 import components.Billboard;
@@ -41,11 +43,11 @@ public class GameplayAppState extends AbstractAppState{
         
         // Loads the terrain
         Spatial terrain = assetManager.loadModel("Scenes/Terrain/terrain.j3o");
-        //rootNode.attachChild(terrain);
+        rootNode.attachChild(terrain);
         
         // Sets the camera's position and velocity
-        //cam.setLocation(new Vector3f(0, 100, 0));
-        flyCam.setMoveSpeed(15);
+        cam.setLocation(new Vector3f(0, 100, 0));
+        flyCam.setMoveSpeed(16);
         
         // Adds lights
         DirectionalLight sun = new DirectionalLight();
@@ -61,30 +63,30 @@ public class GameplayAppState extends AbstractAppState{
         // Gets the Terrain object
         Node temp = (Node)terrain;
         Terrain ground = (Terrain)temp.getChild("Terrain");
-        temp = null;
+        temp.getChild("Terrain").getControl(TerrainLodControl.class).setCamera(cam);
         
         // Gets the entityData
         EntityData ed = stateManager.getState(EntityDataState.class).getEntityData();
         
         for(int i = 0; i < 1000; i++) {
-            int x = FastMath.nextRandomInt(-64, 64);
-            int z = FastMath.nextRandomInt(-64, 64);
-            //float y = ground.getHeight(new Vector2f(x, z));
+            int x = FastMath.nextRandomInt(-256, 256);
+            int z = FastMath.nextRandomInt(-256, 256);
+            float y = ground.getHeight(new Vector2f(x, z)) - 50 - 0.5f;
             
             EntityId id = ed.createEntity();
             ed.setComponents(id,
-                        new Transform(new Vector3f(x, 0, z)),
+                        new Transform(new Vector3f(x, y, z)),
                         new Model(Models.P_Tree1));
         }
         
-        for(int i = 0; i < 1000; i++) {
-            int x = FastMath.nextRandomInt(-64, 64);
-            int z = FastMath.nextRandomInt(-64, 64);
-            //float y = ground.getHeight(new Vector2f(x, z));
+        for(int i = 0; i < 10000; i++) {
+            int x = FastMath.nextRandomInt(-256, 256);
+            int z = FastMath.nextRandomInt(-256, 256);
+            float y = ground.getHeight(new Vector2f(x, z)) - 50;
             
             EntityId id = ed.createEntity();
             ed.setComponents(id,
-                        new Transform(new Vector3f(x, 0, z)),
+                        new Transform(new Vector3f(x, y, z)),
                         new Model(Models.P_TallGrass),
                         new Billboard());
         }

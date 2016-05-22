@@ -96,16 +96,4 @@ public class ModelLoader {
         }
         return null;
     }
-    
-    public static void setAlpha(Spatial spat) {
-        if(spat instanceof Node) {
-            Node n = (Node)spat;
-            for(Spatial s : n.getChildren()) {
-                setAlpha(spat);
-            }
-        } else if(spat instanceof Geometry) {
-            Geometry g = (Geometry)spat;
-            g.setQueueBucket(RenderQueue.Bucket.Transparent);
-        }
-    }
 }
