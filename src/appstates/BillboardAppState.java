@@ -8,20 +8,29 @@ import com.jme3.input.InputManager;
 import com.jme3.input.KeyInput;
 import com.jme3.input.controls.AnalogListener;
 import com.jme3.input.controls.KeyTrigger;
-import com.jme3.math.FastMath;
 import com.jme3.math.Vector3f;
+import com.jme3.scene.Spatial;
 import com.simsilica.es.Entity;
 import com.simsilica.es.EntityData;
+import com.simsilica.es.EntityId;
 import com.simsilica.es.EntitySet;
 import components.Billboard;
+import components.Model;
 import components.Transform;
+import java.util.HashMap;
+import java.util.Set;
 
 public class BillboardAppState extends AbstractAppState {
     
     private SimpleApplication app;
     private EntityData ed;
     private EntitySet entities;
+    private final HashMap<EntityId, Spatial> models;
     private InputManager inputManager;
+    
+    public BillboardAppState() {
+        this.models = new HashMap<EntityId, Spatial>();
+    }
     
 @Override
     public void initialize(AppStateManager stateManager, Application app) {
@@ -55,7 +64,7 @@ public class BillboardAppState extends AbstractAppState {
         }
     }
     
-    private AnalogListener analogListener = new AnalogListener() {
+    private final AnalogListener analogListener = new AnalogListener() {
         @Override
         public void onAnalog(String name, float intensity, float tpf) {
             if(name.equals("Update")) {

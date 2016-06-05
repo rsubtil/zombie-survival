@@ -4,10 +4,11 @@ import appstates.EntityDataState;
 import appstates.GameplayAppState;
 import appstates.VisualAppState;
 import com.jme3.app.SimpleApplication;
+import com.jme3.input.KeyInput;
+import com.jme3.input.controls.AnalogListener;
+import com.jme3.input.controls.KeyTrigger;
 import com.jme3.math.ColorRGBA;
-import com.jme3.math.Vector3f;
 import com.jme3.renderer.RenderManager;
-import com.jme3.scene.Spatial;
 
 public class Main extends SimpleApplication {
 
@@ -23,18 +24,30 @@ public class Main extends SimpleApplication {
                                new GameplayAppState(),
                                // FIXME: This feature is still not totally funcional
                                //        and is causing weird behaviour. Don't uncomment
-                               /*new BillboardAppState()*/
+                               /*new BillboardAppState(),*/
                                new EntityDataState());
        
         viewPort.setBackgroundColor(ColorRGBA.Cyan);
+        
+        inputManager.addMapping("+", new KeyTrigger(KeyInput.KEY_I));
+        inputManager.addMapping("-", new KeyTrigger(KeyInput.KEY_O));
+        inputManager.addListener(analogListener, "+", "-");
     }
+    
+    private final AnalogListener analogListener = new AnalogListener() {
+        @Override
+        public void onAnalog(String name, float intensity, float tpf) {
+            if(name.equals("+")) {
+                cam.setFrustumFar(cam.getFrustumFar() + 100*tpf);
+            } else if(name.equals("-")) {
+                cam.setFrustumFar(cam.getFrustumFar() - 100*tpf);
+            }
+        }
+    };
     
     @Override
     public void simpleUpdate(float tpf) {
-        /*for(Spatial s : rootNode.getChildren()) {
-            s.lookAt(cam.getLocation(), Vector3f.UNIT_Y);
-            
-        }*/
+        
     }
 
     @Override

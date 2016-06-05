@@ -1,0 +1,9 @@
+Material E_Bird1 : Common/MatDefs/Light/Lighting.j3md {
+     MaterialParameters {
+        DiffuseMap : Textures/E_Bird1.png
+     }
+    AdditionalRenderState {
+      FaceCull Back
+        DepthWrite On
+    }
+}

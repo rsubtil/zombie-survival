@@ -1,5 +1,7 @@
 package appstates;
 
+import com.jme3.animation.AnimControl;
+import com.jme3.animation.SkeletonControl;
 import com.jme3.app.Application;
 import com.jme3.app.SimpleApplication;
 import com.jme3.app.state.AbstractAppState;
@@ -19,7 +21,6 @@ import com.jme3.terrain.Terrain;
 import com.jme3.terrain.geomipmap.TerrainLodControl;
 import com.simsilica.es.EntityData;
 import com.simsilica.es.EntityId;
-import components.Billboard;
 import components.Model;
 import components.Transform;
 import tools.ModelLoader.Models;
@@ -43,7 +44,7 @@ public class GameplayAppState extends AbstractAppState{
         
         // Loads the terrain
         Spatial terrain = assetManager.loadModel("Scenes/Terrain/terrain.j3o");
-        rootNode.attachChild(terrain);
+        //rootNode.attachChild(terrain);
         
         // Sets the camera's position and velocity
         cam.setLocation(new Vector3f(0, 100, 0));
@@ -68,18 +69,18 @@ public class GameplayAppState extends AbstractAppState{
         // Gets the entityData
         EntityData ed = stateManager.getState(EntityDataState.class).getEntityData();
         
-        for(int i = 0; i < 1000; i++) {
+        for(int i = 0; i < 100; i++) {
             int x = FastMath.nextRandomInt(-256, 256);
             int z = FastMath.nextRandomInt(-256, 256);
-            float y = ground.getHeight(new Vector2f(x, z)) - 50 - 0.5f;
+            float y = ground.getHeight(new Vector2f(x, z)) - 50 /*- 0.5f*/;
             
             EntityId id = ed.createEntity();
             ed.setComponents(id,
                         new Transform(new Vector3f(x, y, z)),
-                        new Model(Models.P_Tree1));
+                        new Model(Models.E_Bird1));
         }
         
-        for(int i = 0; i < 10000; i++) {
+        /*for(int i = 0; i < 10000; i++) {
             int x = FastMath.nextRandomInt(-256, 256);
             int z = FastMath.nextRandomInt(-256, 256);
             float y = ground.getHeight(new Vector2f(x, z)) - 50;
@@ -87,8 +88,19 @@ public class GameplayAppState extends AbstractAppState{
             EntityId id = ed.createEntity();
             ed.setComponents(id,
                         new Transform(new Vector3f(x, y, z)),
-                        new Model(Models.P_TallGrass),
+                        new Model(Models.P_Tree1),
                         new Billboard());
+        }*/
+        
+        for(Spatial s : rootNode.getChildren()) {
+            AnimControl ac = s.getControl(AnimControl.class);
+            if(ac != null) {
+                ac.createChannel().setAnim("ArmatureAction");
+            }
+            SkeletonControl sc = s.getControl(SkeletonControl.class);
+            if(sc != null) {
+                sc.setHardwareSkinningPreferred(false);
+            }
         }
         
         // Continues to initialize

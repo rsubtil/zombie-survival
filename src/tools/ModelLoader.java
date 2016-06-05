@@ -16,23 +16,28 @@ public class ModelLoader {
     private final AssetManager assetManager;
     
     public static enum Models {
-        I_Gauze("I_Gauze", "I_Gauze", 1, true),
-        I_HealthKit("I_HealthKit", "I_HealthKit", 1, false),
-        I_Pills("I_Pills", "I_Pills", 3, false),
+        I_Gauze("I_Gauze", "I_Gauze", 1, true, false),
+        I_HealthKit("I_HealthKit", "I_HealthKit", 1, false, false),
+        I_Pills("I_Pills", "I_Pills", 3, false, false),
         
-        P_Tree1("P_Tree1", "P_Tree", 5, false),
-        P_TallGrass("P_TallGrass", "P_TallGrass", 1, true);
+        E_Bird1("E_Bird1", "E_Bird", 1, false, true),
+        
+        P_Tree1("P_Tree1", "P_Tree", 5, false, false),
+        P_TallGrass("P_TallGrass", "P_TallGrass", 1, true, false),
+        P_Chair1("P_Chair1", "P_Chair", 1, false, false);
         
         public final String modelName;
         public final String materialName;
         public final int materialVariations;
         private final boolean alpha;
+        private final boolean hasAnimation;
         
-        private Models(String modelName, String materialName, int materialVariations, boolean alpha) {
+        private Models(String modelName, String materialName, int materialVariations, boolean alpha, boolean hasAnimation) {
             this.modelName = modelName;
             this.materialName = materialName;
             this.materialVariations = materialVariations;
             this.alpha = alpha;
+            this.hasAnimation = hasAnimation;
         }
     }
     
