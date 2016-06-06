@@ -10,7 +10,7 @@ Currently the game is avaliable in these formats:
 - Linux x64
 - Mac OSX
 
-Note that these builds havent been tested yet.
+Note that these builds haven't been tested yet.
 
 #### Dependencies
 "Zombie Survival" uses jMonkeyEngine as it main engine. All dependencies are located in the "libs" folder. Just add them to the project's libraries.
@@ -27,4 +27,4 @@ Want to contribute? Great! Make a pull request on my github repository.
 Apache License Version 2.0, January 2004
 
 More details coming soon. **It's freedom, it's [opensource](https://opensource.org/)!**
-This document was written with [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/) and [Emoji](http://www.emoji-cheat-sheet.com/)
+This document was written with [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
