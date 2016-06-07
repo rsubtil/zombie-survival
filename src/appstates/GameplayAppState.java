@@ -19,6 +19,7 @@ import com.jme3.scene.Node;
 import com.jme3.scene.Spatial;
 import com.jme3.terrain.Terrain;
 import com.jme3.terrain.geomipmap.TerrainLodControl;
+import com.jme3.util.TangentBinormalGenerator;
 import com.simsilica.es.EntityData;
 import com.simsilica.es.EntityId;
 import components.Model;
@@ -44,7 +45,9 @@ public class GameplayAppState extends AbstractAppState{
         
         // Loads the terrain
         Spatial terrain = assetManager.loadModel("Scenes/Terrain/terrain.j3o");
-        //rootNode.attachChild(terrain);
+        rootNode.attachChild(terrain);
+        // Adds normals
+        TangentBinormalGenerator.generate(terrain);
         
         // Sets the camera's position and velocity
         cam.setLocation(new Vector3f(0, 100, 0));
@@ -77,7 +80,7 @@ public class GameplayAppState extends AbstractAppState{
             EntityId id = ed.createEntity();
             ed.setComponents(id,
                         new Transform(new Vector3f(x, y, z)),
-                        new Model(Models.E_Bird1));
+                        new Model(Models.P_TallGrass));
         }
         
         /*for(int i = 0; i < 10000; i++) {

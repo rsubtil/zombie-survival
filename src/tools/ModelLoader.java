@@ -4,11 +4,12 @@ import com.jme3.asset.AssetManager;
 import com.jme3.asset.TextureKey;
 import com.jme3.material.Material;
 import com.jme3.math.FastMath;
-import com.jme3.renderer.queue.RenderQueue;
 import com.jme3.renderer.queue.RenderQueue.Bucket;
 import com.jme3.scene.Geometry;
 import com.jme3.scene.Node;
 import com.jme3.scene.Spatial;
+import com.jme3.scene.control.BillboardControl;
+import com.jme3.scene.control.BillboardControl.Alignment;
 import com.jme3.texture.Texture;
 
 public class ModelLoader {
@@ -16,28 +17,30 @@ public class ModelLoader {
     private final AssetManager assetManager;
     
     public static enum Models {
-        I_Gauze("I_Gauze", "I_Gauze", 1, true, false),
-        I_HealthKit("I_HealthKit", "I_HealthKit", 1, false, false),
-        I_Pills("I_Pills", "I_Pills", 3, false, false),
+        I_Gauze("I_Gauze", "I_Gauze", 1, true, false, false),
+        I_HealthKit("I_HealthKit", "I_HealthKit", 1, false, false, false),
+        I_Pills("I_Pills", "I_Pills", 3, false, false, false),
         
-        E_Bird1("E_Bird1", "E_Bird", 1, false, true),
+        E_Bird1("E_Bird1", "E_Bird", 1, false, true, false),
         
-        P_Tree1("P_Tree1", "P_Tree", 5, false, false),
-        P_TallGrass("P_TallGrass", "P_TallGrass", 1, true, false),
-        P_Chair1("P_Chair1", "P_Chair", 1, false, false);
+        P_Tree1("P_Tree1", "P_Tree", 5, false, false, false),
+        P_TallGrass("P_TallGrass", "P_TallGrass", 1, true, false, true),
+        P_Chair1("P_Chair1", "P_Chair", 1, false, false, false);
         
-        public final String modelName;
-        public final String materialName;
-        public final int materialVariations;
+        private final String modelName;
+        private final String materialName;
+        private final int materialVariations;
         private final boolean alpha;
         private final boolean hasAnimation;
+        private final boolean billboard;
         
-        private Models(String modelName, String materialName, int materialVariations, boolean alpha, boolean hasAnimation) {
+        private Models(String modelName, String materialName, int materialVariations, boolean alpha, boolean hasAnimation, boolean billboard) {
             this.modelName = modelName;
             this.materialName = materialName;
             this.materialVariations = materialVariations;
             this.alpha = alpha;
             this.hasAnimation = hasAnimation;
+            this.billboard = billboard;
         }
     }
     
@@ -79,6 +82,13 @@ public class ModelLoader {
             spatial.setQueueBucket(Bucket.Transparent);
         } else {
             spatial.setQueueBucket(Bucket.Opaque);
+        }
+        
+        // Adds BillboardControl for billboard objects
+        if(model.billboard) {
+            BillboardControl bc = new BillboardControl();
+            bc.setAlignment(Alignment.AxialY);
+            spatial.addControl(bc);
         }
         
         // Attaches the model
