@@ -19,12 +19,11 @@ import com.jme3.scene.Node;
 import com.jme3.scene.Spatial;
 import com.jme3.terrain.Terrain;
 import com.jme3.terrain.geomipmap.TerrainLodControl;
-import com.jme3.util.TangentBinormalGenerator;
 import com.simsilica.es.EntityData;
 import com.simsilica.es.EntityId;
 import components.Model;
 import components.Transform;
-import tools.ModelLoader.Models;
+import models.ModelLoader.Models;
 
 public class GameplayAppState extends AbstractAppState{
     
@@ -44,13 +43,13 @@ public class GameplayAppState extends AbstractAppState{
         this.flyCam = this.app.getFlyByCamera();
         
         // Loads the terrain
-        Spatial terrain = assetManager.loadModel("Scenes/Terrain/terrain.j3o");
+        Spatial terrain = assetManager.loadModel("Scenes/Terrain/Terrain.j3o");
         rootNode.attachChild(terrain);
         // Adds normals
-        TangentBinormalGenerator.generate(terrain);
+        //TangentBinormalGenerator.generate(terrain);
         
         // Sets the camera's position and velocity
-        cam.setLocation(new Vector3f(0, 100, 0));
+        cam.setLocation(new Vector3f(0, 3, 0));
         flyCam.setMoveSpeed(16);
         
         // Adds lights
@@ -75,35 +74,23 @@ public class GameplayAppState extends AbstractAppState{
         for(int i = 0; i < 100; i++) {
             int x = FastMath.nextRandomInt(-256, 256);
             int z = FastMath.nextRandomInt(-256, 256);
-            float y = ground.getHeight(new Vector2f(x, z)) - 50 /*- 0.5f*/;
+            float y = ground.getHeight(new Vector2f(x, z));
             
             EntityId id = ed.createEntity();
             ed.setComponents(id,
                         new Transform(new Vector3f(x, y, z)),
-                        new Model(Models.P_TallGrass));
+                        new Model(Models.P_Tree1.name));
         }
         
-        /*for(int i = 0; i < 10000; i++) {
+        for(int i = 0; i < 1000; i++) {
             int x = FastMath.nextRandomInt(-256, 256);
             int z = FastMath.nextRandomInt(-256, 256);
-            float y = ground.getHeight(new Vector2f(x, z)) - 50;
+            float y = ground.getHeight(new Vector2f(x, z));
             
             EntityId id = ed.createEntity();
             ed.setComponents(id,
                         new Transform(new Vector3f(x, y, z)),
-                        new Model(Models.P_Tree1),
-                        new Billboard());
-        }*/
-        
-        for(Spatial s : rootNode.getChildren()) {
-            AnimControl ac = s.getControl(AnimControl.class);
-            if(ac != null) {
-                ac.createChannel().setAnim("ArmatureAction");
-            }
-            SkeletonControl sc = s.getControl(SkeletonControl.class);
-            if(sc != null) {
-                sc.setHardwareSkinningPreferred(false);
-            }
+                        new Model(Models.P_TallGrass.name));
         }
         
         // Continues to initialize

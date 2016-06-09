@@ -1,17 +1,16 @@
 package components;
 
 import com.simsilica.es.EntityComponent;
-import tools.ModelLoader;
 
 public class Model implements EntityComponent {
     
-    private ModelLoader.Models model;
+    private final String model;
     
-    public Model(ModelLoader.Models model) {
+    public Model(String model) {
         this.model = model;
     }
     
-    public ModelLoader.Models getModel() {
+    public String getModel() {
         return model;
     }
 }
